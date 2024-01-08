@@ -1,14 +1,16 @@
 import React from 'react';
 import {StyleSheet, Text } from 'react-native';
 
+import defaultStyles from '../config/styles';
 
 
-function AppText({children}) {
+function AppText({children, style}) {
     return (
-        <Text style={styles.text}>{ children}</Text>
+        <Text style={[defaultStyles.text, style]}>{ children}</Text>
     );
 }
 
+/*
 const styles = StyleSheet.create({
     text: {
         color: "tomato",
@@ -16,4 +18,5 @@ const styles = StyleSheet.create({
         fontFamily: "Roboto" 
     },
 })
+*/
 export default AppText;
