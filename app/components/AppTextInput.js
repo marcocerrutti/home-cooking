@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TextInput, StyleSheet, View, Platform } from 'react-native';
+import { TextInput, StyleSheet, View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import defaultStyles from "../config/styles";
@@ -15,6 +15,7 @@ function AppTextInput({icon, ...otherProps}) {
             />}
 
             <TextInput
+                placeholderTextColor={defaultStyles.colors.medium}
                 style={defaultStyles.text} {...otherProps}
             />
         </View>
