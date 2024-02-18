@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Platform, StatusBar, View } from 'react-native';
-import { Constants } from 'expo-constants';
+//import { Constants } from 'expo-constants';
 
  
 

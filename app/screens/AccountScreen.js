@@ -1,11 +1,14 @@
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 
-
+import { ListItem, ListItemSeparator } from "../components/lists";
 import Screen from '../components/Screen';
-import ListItem from '../components/ListItem';
+//import ListItem from '../components/lists/ListItem';
 import colors from '../config/colors';
 import Icon from '../components/Icon';
+import routes from '../navigation/routes';
+//import ListItemSeparator from './../components/lists/ListItemSeparator';
+
 
 const menuItems = [
     {
@@ -20,13 +23,14 @@ const menuItems = [
         icon: {
             name: "email",
             backgroundColor: colors.secondary,
-        }
+        },
+        targetScreen: routes.MESSAGES,
     }
 ];
 
-function AccountScreen(props) {
+function AccountScreen({navigation}) {
     return (
-        <Screen>
+        <Screen style={styles.screen}>
              <View style={styles.container}>
                 <ListItem
                     title="Uchenna Nwaigwe"
@@ -38,13 +42,18 @@ function AccountScreen(props) {
                 <FlatList
                     data={menuItems}
                     keyExtractor={menuItem => menuItem.title}
+                    ItemSeparatorComponent={ListItemSeparator}
                     renderItem={({ item }) =>
                         <ListItem
                             title={item.title}
                             IconComponent={
-                                <Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor} />
-                            }/>
-                     } />
+                                <Icon name={item.icon.name}
+                                    backgroundColor={item.icon.backgroundColor} />
+                           }
+                        />
+                     }
+                    onPress={() => navigation.navigate(item.targetScreen)}
+                />
             </View>
             <ListItem
                 title="Log Out"
@@ -54,6 +63,9 @@ function AccountScreen(props) {
 }
 
 const styles = StyleSheet.create({
+    screen: {
+        backgroundColor: colors.light,
+      },
     container: {
         marginVertical: 20
     },
